@@ -26,5 +26,8 @@ jobs:
       - name: Check Jest installation
         run: ls -la node_modules/.bin
 
+      - name: Grant Jest execution permission
+        run: chmod +x node_modules/.bin/jest
+
       - name: Run tests
-        run: npx jest
+        run: node node_modules/.bin/jest
