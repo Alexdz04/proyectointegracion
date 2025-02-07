@@ -8,19 +8,23 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Configurar Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 'lts/*'
+          cache: 'npm'
 
-      - name: Instalar dependencias
+      - name: Install dependencies
         run: npm install
 
-      - name: Ejecutar pruebas
-        run: npm test
+      - name: Check Jest installation
+        run: ls -la node_modules/.bin
+
+      - name: Run tests
+        run: npx jest
